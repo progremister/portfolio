@@ -2,18 +2,28 @@
 
 .modal-work {
     display: flex;
+
+    @media @mobile-sm {
+        flex-direction: column;
+    }
 }
 
 .modal-work__preview {
     width: 65%;
     position: relative;
     overflow: hidden;
+
+    @media @mobile-sm {
+        width: 100%;
+        order: 1;
+    }
 }
 
 .modal-work__photo {
     position: absolute;
     top: 50%;
     left: 50%;
+    height: 100%;
     z-index: 1;
 
     transform: translate3d(-50%, -50%, 0);
@@ -23,6 +33,11 @@
     width: 35%;
     padding: 3.4rem 6.6rem 1rem 1.73rem;
     position: relative;
+
+    @media @mobile-sm {
+        width: 100%;
+        order: 2;
+    }
 }
 
 .modal-work__header {
