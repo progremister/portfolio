@@ -2,8 +2,9 @@ $(function() {
 
     const worksSlider = $('[data-slider="slick"]');
 
-    /* Filter
-    =====================*/
+    /**
+     * Filter
+     */
     let filter = $("[data-filter]");
 
     filter.on("click", function(event) {
@@ -32,7 +33,9 @@ $(function() {
             scrollOffset = $(window).scrollTop();
     
     
-        /* Fixed Header */
+        /**
+         * Fixed header
+         */     
         checkScroll(scrollOffset);
     
         $(window).on("scroll", function() {
@@ -51,7 +54,10 @@ $(function() {
     
     
     
-        /* Smooth scroll */
+        /**
+         * Smooth scroll
+         */
+
         $("[data-scroll]").on("click", function(event) {
             event.preventDefault();
     
@@ -70,8 +76,9 @@ $(function() {
 
 
 
-    /* Modal
-    =====================*/
+    /**
+     * Modal
+     */
 
     const modalCall = $("[data-modal]");
     const modalClose = $("[data-close]");
@@ -132,9 +139,9 @@ $(function() {
 
 
 
-    /* Slider: https://kenwheeler.github.io/slick/
-    =====================*/
-
+    /**
+     * Slider: https://kenwheeler.github.io/slick/
+     */
     
      worksSlider.slick({
          infinite: true,
@@ -164,8 +171,9 @@ $(function() {
 
 
 
-    /* Mobile nav
-    ==================*/
+    /**
+     * Mobile nav
+     */
 
     const navToggle = $("#navToggle");
     const nav = $("#nav");
@@ -176,5 +184,44 @@ $(function() {
         nav.toggleClass("show");
     });
 
+    /**
+     * Form validation
+     */
 
+    $("#submit_btn").on("click", function(){
+        let email = $("#input-email").val().trim();
+        let message = $("#input-text").val().trim();
+
+        console.log(email);
+        if(email == "") {
+            alert("Don't forget to input email!");
+            return false;
+        }else if(message.length < 3) {
+            alert("Please input a bit longer message!");
+            return false;
+        }
+    });
+    
+
+    $.ajax({
+        url: 'ajax/mail.php',
+        type: 'POST',
+        cache: false,
+        data: {
+            'email': email,
+            'message': message
+        },
+        dataType: 'html',
+        beforeSend: function(){
+            $("#submit_btn").prop("disabled", true);
+        },
+        success: function(data){
+            if (!data) {
+                alert("Oops, something went wrong!");
+            } else {
+                $("#contact_form").trigger("reset");
+            }
+            $("#submit_btn").prop("disabled", false);
+        }
+    });
 });
