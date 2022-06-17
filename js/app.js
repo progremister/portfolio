@@ -81,6 +81,7 @@ $(function() {
 
         let $this = $(this);
         let modalId = $this.data('modal');
+        console.log(modalId);
 
         $(modalId).addClass('show');
         $("body").addClass('no-scroll');
@@ -134,32 +135,31 @@ $(function() {
     /* Slider: https://kenwheeler.github.io/slick/
     =====================*/
 
-    /***
-     * worksSlider.slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        fade: true,
-        arrows: false,
-        dots: true
-    });
+    
+     worksSlider.slick({
+         infinite: true,
+         slidesToShow: 1,
+         slidesToScroll: 1,
+         fade: true,
+         arrows: false,
+         dots: true
+     });
 
-    $(".slickPrev").on("click", function(event) {
-        event.preventDefault();
+     $(".slickPrev").on("click", function(event) {
+         event.preventDefault();
 
-        let currentSlider = $(this).parents('.modal').find('[data-slider="slick"]');
+         let currentSlider = $(this).parents('.modal').find('[data-slider="slick"]');
 
-        currentSlider.slick("slickPrev");
-    });
+         currentSlider.slick("slickPrev");
+     });
 
-    $(".slickNext").on("click", function(event) {
-        event.preventDefault();
+     $(".slickNext").on("click", function(event) {
+         event.preventDefault();
 
-        let currentSlider = $(this).parents('.modal').find('[data-slider="slick"]');
+         let currentSlider = $(this).parents('.modal').find('[data-slider="slick"]');
 
-        currentSlider.slick("slickNext");
-    });
-     */
+         currentSlider.slick("slickNext");
+     });
     
 
 
